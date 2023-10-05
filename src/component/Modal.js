@@ -1,7 +1,7 @@
-import React from "react";
 import "../App.css";
+import React from "react";
 
-const Modal = () => {
+export const Modal = () => {
   return (
     <div className="modal">
       <h4>제목</h4>

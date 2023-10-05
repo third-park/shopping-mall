@@ -3,10 +3,11 @@ import { useState } from "react";
 import { Modal } from "./component/Modal";
 
 function App() {
-  let [title, setTitle] = useState(["남자코트 추천", "강남 우동맛집", "파이썬 독학"]);
-  let [name1, name2, name3] = title;
-
-  let [num, setNum] = useState(0);
+  const [title, setTitle] = useState(["남자코트 추천", "강남 우동맛집", "파이썬 독학"]);
+  const [name1, name2, name3] = title;
+  
+  const [num, setNum] = useState(0);
+  const [modal, setModal] = useState(false);
 
   return (
     <div className="App">
@@ -31,11 +32,11 @@ function App() {
         <h4>{name2}</h4>
         <p>10월 4일 발생</p>
       </div>
-      <div className="list">
+      <div className="list" onClick={ () => setModal(!modal) }>
         <h4>{name3}</h4>
         <p>10월 4일 발생</p>
       </div>
-      <Modal></Modal>
+      {modal === true ? <Modal></Modal> : null}
     </div>
     
   );
