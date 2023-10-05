@@ -4,9 +4,9 @@ import { Modal } from "./component/Modal";
 
 function App() {
   const [title, setTitle] = useState(["남자코트 추천", "강남 우동맛집", "파이썬 독학"]);
-  const [name1, name2, name3] = title;
+  // const [name1, name2, name3] = title;
   
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
 
   return (
@@ -14,26 +14,40 @@ function App() {
       <div className="nav">
         <h4>블로그그</h4>
       </div>
+      {
+        title.map((a, i)=>{      
+        return(
+          <div className="list" key={i}>
+          <h4>{ a }<span onClick={() => {
+            let copy2 = [...num];
+            console.log(copy2);
+            copy2[i] = copy2[i] + 1;
+            setNum(copy2)
+            }}>👍</span>{num[i]}</h4>
+          <p>10월 4일 발생</p>
+          </div>
+          )
+        })
+      }
       <div className="list">
-        <h4>{name1} <span onClick={() => setNum(num + 1)}>👍</span>{num}</h4>
+        <h4>{title[0]}</h4>
         <p>10월 4일 발생</p>
         <button
           type="button"
           onClick={() => {
             let copy = [...title];
             copy[0] = "여자코트 추천";
-            copy.sort()
             setTitle(copy);
           }}>
           변경
         </button>
       </div>
       <div className="list">
-        <h4>{name2}</h4>
+        <h4>{title[1]}</h4>
         <p>10월 4일 발생</p>
       </div>
       <div className="list" onClick={ () => setModal(!modal) }>
-        <h4>{name3}</h4>
+        <h4>{title[2]}</h4>
         <p>10월 4일 발생</p>
       </div>
       {modal === true ? <Modal></Modal> : null}
